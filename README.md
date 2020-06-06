@@ -18,9 +18,10 @@
 源码：[HDFS.HDFS_demo.java](src/main/java/hdfs/HDFS_demo.java)
 
 # Mapreduce
-1. [wordcount](src/main/java/mapreduce/wordcount/)
+- [WordCount](src/main/java/mapreduce/wordcount)
+- [Deduplication](src/main/java/mapreduce/deduplication/Deduplication.java)
+- [AverageScore](src/main/java/mapreduce/average_score/AverageScore.java)
 
-2. [去重](src/main/java/mapreduce/deduplication/)
 
 
 

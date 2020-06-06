@@ -1,11 +1,13 @@
-package mapreduce.deduplication;
+package mapreduce.average_score;
 
 import mapreduce.wordcount.MyMapper;
 import mapreduce.wordcount.MyReducer;
 import mapreduce.wordcount.WordCount;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -15,10 +17,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
 
-/**
- * 使用mapreduce去重
- */
-public class Deduplication {
+public class AverageScore {
     public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException {
         Configuration conf = new Configuration();
         // mapreduce本地运行
@@ -27,37 +26,51 @@ public class Deduplication {
 
         Job job = Job.getInstance(conf);
         job.setJarByClass(WordCount.class);
-        job.setJobName("Deduplication");
+        job.setJobName("WordCount");
 
-        Path inPath = new Path("./data/deduplication/input/");
+        Path inPath = new Path("./data/average/input");
         FileInputFormat.addInputPath(job, inPath);
-        Path outPath = new Path("./data/deduplication/output/");
+        Path outPath = new Path("./data/average/output");
         // if output path exist, delete
         if (outPath.getFileSystem(conf).exists(outPath))
             outPath.getFileSystem(conf).delete(outPath, true);
         FileOutputFormat.setOutputPath(job, outPath);
 
-        job.setMapperClass(DedupMapper.class);
+        job.setMapperClass(ScoreMapper.class);
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(Text.class);
-        job.setReducerClass(DedupReducer.class);
+        job.setOutputValueClass(IntWritable.class);
+        job.setReducerClass(ScoreReducer.class);
 
         // Submit the job, then poll for progress until the job is complete
         job.waitForCompletion(true);
 
     }
 
-    private static class DedupMapper extends Mapper<Object,Text,Text,Text> {
+    private static class ScoreMapper extends Mapper<LongWritable,Text,Text,IntWritable> {
+        Text name = new Text();
+        IntWritable score = new IntWritable();
+
         @Override
-        protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-            context.write(value,new Text(""));
+        protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+            String[] s = value.toString().split(" ");
+            name.set(s[0]);
+            score.set(Integer.parseInt(s[1]));
+            context.write(name,score);
         }
     }
 
-    private static class DedupReducer extends Reducer<Text,Text,Text,Text> {
+    private static class ScoreReducer extends Reducer<Text,IntWritable,Text,FloatWritable> {
+        FloatWritable averageScore = new FloatWritable();
         @Override
-        protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-            context.write(key,new Text(""));
+        protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+            int sum = 0;
+            int count = 0;
+            for (IntWritable value : values) {
+                sum += value.get();
+                count++;
+            }
+            averageScore.set((float) (sum*1.0/count));
+            context.write(key, averageScore);
         }
     }
 }
