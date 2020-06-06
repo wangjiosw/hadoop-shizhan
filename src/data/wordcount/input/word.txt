@@ -1,4 +1,0 @@
-hadoop hello world
-hello hadoop
-hbase zookeeper
-name name name

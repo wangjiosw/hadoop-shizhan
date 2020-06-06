@@ -16,3 +16,11 @@
 - 遍历文件和目录
 
 源码：[HDFS.HDFS_demo.java](src/main/java/hdfs/HDFS_demo.java)
+
+# Mapreduce
+## 1. wordcount
+- 从hdfs的/data/wordcount/input目录读取数据 
+- mapreduce本地运行wordcount程序 
+- 结果输出到从hdfs的/data/wordcount/output目录
+
+源码：[wordcount](src/main/java/wordcount/)
