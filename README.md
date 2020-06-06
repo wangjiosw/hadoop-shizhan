@@ -19,7 +19,7 @@
 
 # Mapreduce
 - [WordCount](src/main/java/mapreduce/wordcount)
-- [Deduplication](src/main/java/mapreduce/deduplication/Deduplication.java)
+- [去重](src/main/java/mapreduce/deduplication/Deduplication.java)
 - [求平均分](src/main/java/mapreduce/average_score/AverageScore.java)
 - [二次排序](src/main/java/mapreduce/second_sort)
 
