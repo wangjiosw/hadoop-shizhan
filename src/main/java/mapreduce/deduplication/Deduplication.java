@@ -30,10 +30,10 @@ public class Deduplication {
         job.setJobName("Deduplication");
 
         // load data from hdfs
-        Path inPath = new Path("/data/deduplication/input/");
+        Path inPath = new Path("./data/deduplication/input/");
         FileInputFormat.addInputPath(job, inPath);
         // wirte result to hdfs
-        Path outPath = new Path("/data/deduplication/output/");
+        Path outPath = new Path("./data/deduplication/output/");
         // if output path exist, delete
         if (outPath.getFileSystem(conf).exists(outPath))
             outPath.getFileSystem(conf).delete(outPath, true);

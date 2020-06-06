@@ -22,10 +22,10 @@ public class WordCount {
         job.setJobName("WordCount");
 
         // load data from hdfs
-        Path inPath = new Path("/data/wordcount/input");
+        Path inPath = new Path("./data/wordcount/input");
         FileInputFormat.addInputPath(job, inPath);
         // wirte result to hdfs
-        Path outPath = new Path("/data/wordcount/output");
+        Path outPath = new Path("./data/wordcount/output");
         // if output path exist, delete
         if (outPath.getFileSystem(conf).exists(outPath))
             outPath.getFileSystem(conf).delete(outPath, true);
