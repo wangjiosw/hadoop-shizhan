@@ -20,7 +20,14 @@
 # Mapreduce
 - [WordCount](src/main/java/mapreduce/wordcount)
 - [Deduplication](src/main/java/mapreduce/deduplication/Deduplication.java)
-- [AverageScore](src/main/java/mapreduce/average_score/AverageScore.java)
+- [求平均分](src/main/java/mapreduce/average_score/AverageScore.java)
+- [二次排序](src/main/java/mapreduce/second_sort)
+
+# HBase
+- [HbaseDemo](src/main/java/hbase/HbaseDemo.java)
+- [Hbase MapReduce数据转移](src/main/java/hbase/example)
+
+
 
 
 
