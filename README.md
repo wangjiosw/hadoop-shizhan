@@ -15,4 +15,4 @@
 - 删除目录
 - 遍历文件和目录
 
-源码：[HDFS_demo.java](./src/main/java/HDFS_demo.java)
+源码：[HDFS.HDFS_demo.java](src/main/java/hdfs/HDFS_demo.java)
