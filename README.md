@@ -27,6 +27,16 @@
 - [HbaseDemo](src/main/java/hbase/HbaseDemo.java)
 - [Hbase MapReduce数据转移](src/main/java/hbase/example)
 
+# Kafka
+- [生产者-消费者](src/main/java/kafka)
+
+# Spark
+## Spark Core
+- [spark WordCount](src/main/scala/spark/core/wordcount/WordCount.scala)
+## Spark SQL
+- [二次排序](src/main/scala/spark/sql/SecondSort.scala)
+
+
 
 
 

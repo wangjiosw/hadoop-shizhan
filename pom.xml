@@ -13,6 +13,8 @@
         <zookeeper.version>3.4.14</zookeeper.version>
         <hbase.version>1.2.6.1</hbase.version>
         <kafka.version>2.0.0</kafka.version>
+        <scala.version>2.11.8</scala.version>
+        <spark.version>2.4.0</spark.version>
     </properties>
 
     <dependencies>
@@ -62,6 +64,23 @@
             <artifactId>kafka-clients</artifactId>
             <version>${kafka.version}</version>
         </dependency>
+        <!--scala-->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <!--spark-->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.11</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.11</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
 
 
 
@@ -76,7 +95,13 @@
             <artifactId>log4j</artifactId>
             <version>1.2.12</version>
         </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.18.Final</version>
+        </dependency>
     </dependencies>
+
 
 
     <build>
