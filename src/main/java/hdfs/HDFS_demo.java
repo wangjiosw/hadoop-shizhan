@@ -28,7 +28,7 @@ public class HDFS_demo {
      */
     @Test
     public void catFile() throws IOException {
-        FSDataInputStream in = fs.open(new Path("hdfs:/mapreduce.wordcount/input/word.txt"));
+        FSDataInputStream in = fs.open(new Path("hdfs:/data/wordcount/input/word.txt"));
         IOUtils.copyBytes(in,System.out,4096,false);
         IOUtils.closeStream(in);
     }

@@ -12,6 +12,7 @@
         <hadoop.version>2.6.5</hadoop.version>
         <zookeeper.version>3.4.14</zookeeper.version>
         <hbase.version>1.2.6.1</hbase.version>
+        <kafka.version>2.0.0</kafka.version>
     </properties>
 
     <dependencies>
@@ -55,6 +56,12 @@
             <artifactId>hbase-server</artifactId>
             <version>${hbase.version}</version>
         </dependency>
+        <!--kafka-->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+        </dependency>
 
 
 
@@ -87,6 +94,14 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

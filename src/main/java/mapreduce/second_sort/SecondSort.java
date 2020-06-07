@@ -1,7 +1,5 @@
 package mapreduce.second_sort;
 
-import mapreduce.wordcount.MyMapper;
-import mapreduce.wordcount.MyReducer;
 import mapreduce.wordcount.WordCount;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
